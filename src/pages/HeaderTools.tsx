@@ -848,7 +848,7 @@ function verifyAuthHeader(authHeader, requestBody, publicKey) {
   try {
     // Parse authorization header
     const headerParts = {};
-    const regex = /(\\w+)="([^"]+)"/g;
+    const regex = /(\w+)=['"]([^'"]+)['"]/g;
     let match;
     while ((match = regex.exec(authHeader)) !== null) {
       headerParts[match[1]] = match[2];
@@ -958,7 +958,7 @@ def verify_auth_header(auth_header, request_body, public_key):
     try:
         # Parse authorization header
         header_parts = {}
-        pattern = r'(\\w+)="([^"]+)"'
+        pattern = r'(\w+)=[\"']([^\"']+)[\"']'
         matches = re.findall(pattern, auth_header)
         for key, value in matches:
             header_parts[key] = value
@@ -1074,7 +1074,7 @@ public static VerificationResult verifyAuthHeader(String authHeader, String requ
     try {
         // Parse authorization header
         Map<String, String> headerParts = new HashMap<>();
-        Pattern pattern = Pattern.compile("(\\w+)=\"([^\"]+)\"");
+        Pattern pattern = Pattern.compile("(\w+)=['"]([^'"]+)['"]");
         Matcher matcher = pattern.matcher(authHeader);
         while (matcher.find()) {
             headerParts.put(matcher.group(1), matcher.group(2));
@@ -1193,7 +1193,7 @@ public static VerificationResult VerifyAuthHeader(string authHeader, object requ
     {
         // Parse authorization header
         var headerParts = new Dictionary<string, string>();
-        var pattern = @"(\w+)=""([^""]+)""";
+        var pattern = @"(\w+)=[\"']([^\"']+)[\"']";
         var matches = Regex.Matches(authHeader, pattern);
         
         foreach (Match match in matches)
